@@ -22,4 +22,7 @@ ADD odbc.ini /etc/
 
 ADD odbcinst.ini /etc/
 
+
 RUN isql -v Sample_Cloudera_Impala_DSN_64
+
+
