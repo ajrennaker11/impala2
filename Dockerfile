@@ -7,22 +7,6 @@ RUN apt-get install krb5-user
 RUN apt-get install unixodbc
 RUN apt-get install unixodbc-dev
 RUN apt-get install alien dpkg-dev debhelper build-essential
-RUN wget https://downloads.cloudera.com/connectors/impala_odbc_2.5.39.1020/Linux/SLES11/ClouderaImpalaODBC-2.5.39.1020-1.x86_64.rpm
-ADD ClouderaImpalaODBC-2.5.26.1027-1.x86_64.rpm 
-RUN alien ClouderaImpalaODBC-2.5.26.1027-1.x86_64.rpm
-RUN adpkg -i clouderaimpalaodbc_2.5.26.1027-2_amd64.deb
 
-ADD impala_env.sh /etc/profile.d/
-
-RUN source /etc/profile.d/impala_env.sh
-
-RUN odbcinst -j
-
-ADD odbc.ini /etc/
-
-ADD odbcinst.ini /etc/
-
-
-RUN isql -v Sample_Cloudera_Impala_DSN_64
-
-
+RUN wget https://downloads.cloudera.com/connectors/impala_odbc_2.6.0.1000/Debian/clouderaimpalaodbc_2.6.0.1000-2_amd64.deb
+RUN apt install -y ./clouderaimpalaodbc_2.6.0.1000-2_amd64.deb
